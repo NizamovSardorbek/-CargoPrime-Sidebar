@@ -7,10 +7,9 @@ export const Wrapper = styled.div`
 `;
 
 export const SideBarDiv = styled.div`
-  width: ${({ open }) => (open === true ? "70px" : "350px")};
-  overflow: hidden;
+  position: relative;
+  width: ${({ open }) => (open === true ? "65px" : "350px")};
   padding: 15px 0px;
-  background-color: #f4f4f4;
   transition: all 0.5s ease;
 `;
 
@@ -18,6 +17,7 @@ export const LogoWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow: hidden;
   gap: 5px;
   padding: ${({ open }) => (open === true ? "0 0 0 18px" : "0 10px")};
   i {
@@ -46,6 +46,7 @@ export const Logo = styled.img`
 export const Container = styled.div`
   flex-basis: 100%;
   padding: 10px;
+  background-color: #f4f4f4;
 `;
 
 export const SideBarItems = styled.div`
@@ -59,6 +60,7 @@ export const SideBarItems = styled.div`
 `;
 
 export const ItemsDiv = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -70,9 +72,9 @@ export const SideBarItem = styled.div`
   cursor: pointer;
   padding: 5px 15px;
   margin: 15px 0;
+
   :hover {
     transition: all 0.3s ease;
-    background-color: #e5e5e5;
   }
 
   :hover i {
@@ -89,6 +91,7 @@ export const SideBarItem = styled.div`
 
   .downArrow {
     width: 20px;
+    overflow: hidden;
     transform: ${({ openIcon }) => (openIcon === true ? "rotate(180deg)" : "")};
   }
 
@@ -106,14 +109,50 @@ export const SideBarItem = styled.div`
 
 export const ChildsOfItem = styled.ul``;
 export const ChildOfItem = styled.li`
+  transform: scaleY(1);
   font-size: 16px;
   padding: 12px;
-  transition: all 0.3s ease;
   border-radius: 5px;
-  margin-top:10px ;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+
   :hover {
     -webkit-box-shadow: -1px 1px 15px -2px rgba(0, 0, 0, 0.3);
     box-shadow: -1px 1px 15px -2px rgba(0, 0, 0, 0.3);
+    background-color: #ffff;
+    color: #309cff;
+  }
+`;
+
+export const DriverProfile = styled.div`
+  width: 100%;
+  height: 70px;
+  background-color: #e4e4e4;
+  margin-top: 220px;
+`;
+
+export const NestedItemDiv = styled.div`
+  position: relative;
+`;
+export const NestedItemUl = styled.ul`
+  position: absolute;
+  top: -25px;
+  left: 50px;
+  border-radius: 10px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 5px 21px -4px #000000;
+  box-shadow: 0px 5px 21px -4px #000000;
+`;
+export const NestedItemLi = styled.li`
+  font-size: 15px;
+  width: 145px;
+  padding: 15px;
+  transition: all 0.2s ease;
+  border-radius: 10px;
+  :hover {
+    -webkit-box-shadow: -1px 1px 15px -2px rgba(0, 0, 0, 0.3);
+    box-shadow: -1px 1px 15px -2px rgba(0, 0, 0, 0.3);
+    background-color: #ffff;
     color: #309cff;
   }
 `;

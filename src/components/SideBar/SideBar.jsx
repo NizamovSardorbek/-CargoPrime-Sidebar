@@ -13,6 +13,10 @@ import {
   DropDownElemnts,
   ChildOfItem,
   ChildsOfItem,
+  DriverProfile,
+  NestedItemDiv,
+  NestedItemUl,
+  NestedItemLi,
 } from "./SideBarStyle";
 
 const SideBar = () => {
@@ -50,19 +54,34 @@ const SideBar = () => {
                   <span>{item.title}</span>
                   <i className="downArrow">{item.downArrow}</i>
                 </ItemsDiv>
-                <DropDownElemnts>
-                  {item?.open
-                    ? item.nested?.map((val, index) => (
-                        <ChildsOfItem key={index}>
-                          <ChildOfItem>{val.item}</ChildOfItem>
-                        </ChildsOfItem>
-                      ))
-                    : ""}
-                </DropDownElemnts>
+                {active === true ? (
+                  <NestedItemDiv>
+                    {item?.open ? (
+                      <NestedItemUl>
+                        {item.nested?.map((val, index) => (
+                          <NestedItemLi key={index}>{val.item}</NestedItemLi>
+                        ))}
+                      </NestedItemUl>
+                    ) : (
+                      ""
+                    )}
+                  </NestedItemDiv>
+                ) : (
+                  <DropDownElemnts>
+                    {item?.open
+                      ? item.nested?.map((val, index) => (
+                          <ChildsOfItem key={index}>
+                            <ChildOfItem>{val.item}</ChildOfItem>
+                          </ChildsOfItem>
+                        ))
+                      : ""}
+                  </DropDownElemnts>
+                )}
               </SideBarItem>
             ))}
           </ul>
         </SideBarItems>
+        <DriverProfile>NURBEK</DriverProfile>
       </SideBarDiv>
       <Container>SideBar</Container>
     </Wrapper>

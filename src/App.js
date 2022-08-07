@@ -3,7 +3,7 @@ import Style from "./components/StyleComponent/Style.jsx";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       {/* <Style /> */}
       <SideBar />
     </div>

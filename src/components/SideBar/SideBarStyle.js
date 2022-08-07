@@ -125,6 +125,8 @@ export const ChildOfItem = styled.li`
 `;
 
 export const DriverProfile = styled.div`
+  font-size: 16px;
+  font-weight: 600;
   width: 100%;
   height: 70px;
   background-color: #e4e4e4;

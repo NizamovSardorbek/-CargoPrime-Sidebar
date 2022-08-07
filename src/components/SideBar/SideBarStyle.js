@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   font-family: "Open Sans", sans-serif;
   display: flex;
   box-sizing: border-box;
-  height: 100vh;
 `;
 
 export const SideBarDiv = styled.div`
@@ -47,7 +46,6 @@ export const Logo = styled.img`
 export const Container = styled.div`
   flex-basis: 100%;
   padding: 10px;
-  background-color: yellow;
 `;
 
 export const SideBarItems = styled.div`
@@ -60,16 +58,18 @@ export const SideBarItems = styled.div`
   }
 `;
 
-export const SideBarItem = styled.div`
+export const ItemsDiv = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
   gap: 20px;
+`;
+
+export const DropDownElemnts = styled.div``;
+
+export const SideBarItem = styled.div`
   cursor: pointer;
-  padding: 7px 15px;
-  margin: 10px 0;
-  background-color: ${({ active }) => (active === true ? "black" : "")};
-  transition: all 0.5s ease;
+  padding: 5px 15px;
+  margin: 15px 0;
   :hover {
     transition: all 0.3s ease;
     background-color: #e5e5e5;
@@ -88,18 +88,32 @@ export const SideBarItem = styled.div`
   }
 
   .downArrow {
-    display: ${({ open }) => (open === true ? "none " : "block")};
-    transition: all 1s ease;
+    width: 20px;
+    transform: ${({ openIcon }) => (openIcon === true ? "rotate(180deg)" : "")};
   }
 
   span {
     display: ${({ open }) => (open === true ? "none " : "block")};
     white-space: nowrap;
-    width: 100px;
+    width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
     color: rgba(0, 0, 0, 0.85);
     font-size: 15px;
     flex: auto;
+  }
+`;
+
+export const ChildsOfItem = styled.ul``;
+export const ChildOfItem = styled.li`
+  font-size: 16px;
+  padding: 12px;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  margin-top:10px ;
+  :hover {
+    -webkit-box-shadow: -1px 1px 15px -2px rgba(0, 0, 0, 0.3);
+    box-shadow: -1px 1px 15px -2px rgba(0, 0, 0, 0.3);
+    color: #309cff;
   }
 `;

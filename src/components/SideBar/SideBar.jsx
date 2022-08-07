@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { MdOutlineDoubleArrow, MdKeyboardArrowDown } from "react-icons/md";
-import { TbTruckDelivery, TbTruckLoading } from "react-icons/tb";
-import { GiTruck } from "react-icons/gi";
-import { FiMonitor, FiSettings } from "react-icons/fi";
-import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { navbarItems } from "./Data";
+import { MdOutlineDoubleArrow } from "react-icons/md";
 import {
   Container,
   Wrapper,
@@ -12,45 +9,24 @@ import {
   LogoWrap,
   SideBarItems,
   SideBarItem,
+  ItemsDiv,
+  DropDownElemnts,
+  ChildOfItem,
+  ChildsOfItem,
 } from "./SideBarStyle";
 
 const SideBar = () => {
+  const [data, setData] = useState(navbarItems);
   const [active, setActive] = useState(false);
-  const navbarItems = [
-    { id: 1, active: false, icon: <TbTruckDelivery />, title: "Loads" },
-    {
-      id: 2,
-      active: false,
-      icon: <TbTruckLoading />,
-      title: "Trailer Management",
-      downArrow: <MdKeyboardArrowDown />,
-    },
-    {
-      id: 3,
-      active: false,
-      icon: <GiTruck />,
-      title: "Truck Management",
-      downArrow: <MdKeyboardArrowDown />,
-    },
-    {
-      id: 4,
-      active: false,
-      icon: <AiOutlineUsergroupAdd />,
-      title: "Equipment Management",
-      downArrow: <MdKeyboardArrowDown />,
-    },
-    { id: 5, active: false, icon: <FiMonitor />, title: "Monitoring" },
-    {
-      id: 6,
-      active: false,
-      icon: <FiSettings />,
-      title: "Settings",
-      downArrow: <MdKeyboardArrowDown />,
-    },
-  ];
+  const [open, setopen] = useState(false);
+
   const openSideBar = () => {
     setActive(!active);
-    console.log("opened");
+  };
+
+  const ToggleDropDown = (item) => {
+    item.open = !item.open;
+    setopen(!open);
   };
   return (
     <Wrapper>
@@ -63,11 +39,26 @@ const SideBar = () => {
         </LogoWrap>
         <SideBarItems>
           <ul>
-            {navbarItems.map((item, index) => (
-              <SideBarItem key={index} open={active}>
-                <i>{item.icon}</i>
-                <span>{item.title}</span>
-                <i className="downArrow">{item.downArrow}</i>
+            {data.map((item, index) => (
+              <SideBarItem
+                key={index}
+                openIcon={item.open}
+                onClick={() => ToggleDropDown(item)}
+              >
+                <ItemsDiv>
+                  <i>{item.icon}</i>
+                  <span>{item.title}</span>
+                  <i className="downArrow">{item.downArrow}</i>
+                </ItemsDiv>
+                <DropDownElemnts>
+                  {item?.open
+                    ? item.nested?.map((val, index) => (
+                        <ChildsOfItem key={index}>
+                          <ChildOfItem>{val.item}</ChildOfItem>
+                        </ChildsOfItem>
+                      ))
+                    : ""}
+                </DropDownElemnts>
               </SideBarItem>
             ))}
           </ul>
